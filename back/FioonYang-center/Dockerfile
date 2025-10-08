@@ -1,21 +1,16 @@
-# 使用OpenJDK 8作为基础镜像
-FROM openjdk:8-jdk-alpine
+# 使用更稳定的OpenJDK 8镜像
+FROM openjdk:8-jre-alpine
 
 # 设置工作目录
 WORKDIR /app
 
-# 复制Maven配置文件
-COPY pom.xml .
-COPY src ./src
-
-# 安装Maven
-RUN apk add --no-cache maven
-
-# 构建应用
-RUN mvn clean package -DskipTests
+# 复制预构建的jar文件
+COPY target/user-center-backend-0.0.1-SNAPSHOT.jar app.jar
 
 # 暴露端口
 EXPOSE 8080
 
 # 启动应用
-CMD ["java", "-jar", "target/user-center-backend-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "app.jar"]
+
+
