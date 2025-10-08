@@ -4,7 +4,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "java -jar target/*.jar",
+    "startCommand": "java -jar target/user-center-backend-0.0.1-SNAPSHOT.jar",
     "healthcheckPath": "/api/user/current",
     "healthcheckTimeout": 300
   }

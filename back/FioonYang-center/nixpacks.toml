@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ['jdk8', 'maven']
+
+[phases.build]
+cmds = ['mvn clean package -DskipTests']
+
+[phases.start]
+cmd = 'java -jar target/user-center-backend-0.0.1-SNAPSHOT.jar'
+
+[variables]
+JAVA_HOME = '/nix/store/*-openjdk-8*/'
