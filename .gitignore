@@ -9,7 +9,7 @@
 
 # Node.js
 node_modules/
-dist/
+# dist/  # 临时注释，允许提交预构建的前端文件
 .umi/
 .cache/
 .mfsu/
