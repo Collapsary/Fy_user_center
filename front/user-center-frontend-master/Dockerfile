@@ -1,12 +1,26 @@
-FROM nginx
+# 使用Node.js 16作为基础镜像
+FROM node:16-alpine
 
-WORKDIR /usr/share/nginx/html/
-USER root
+# 设置工作目录
+WORKDIR /app
 
-COPY ./docker/nginx.conf /etc/nginx/conf.d/default.conf
+# 复制package.json和package-lock.json
+COPY package*.json ./
 
-COPY ./dist  /usr/share/nginx/html/
+# 安装依赖
+RUN npm install
 
-EXPOSE 80
+# 复制源代码
+COPY . .
 
-CMD ["nginx", "-g", "daemon off;"]
+# 构建应用
+RUN npm run build
+
+# 安装serve来提供静态文件服务
+RUN npm install -g serve
+
+# 暴露端口
+EXPOSE 3000
+
+# 启动应用
+CMD ["serve", "-s", "dist", "-l", "3000"]
