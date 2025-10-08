@@ -5,7 +5,7 @@ FROM eclipse-temurin:8-jre-alpine
 WORKDIR /app
 
 # 复制预构建的jar文件（如果存在）
-COPY back/FioonYang-center/target/user-center-backend-0.0.1-SNAPSHOT.jar app.jar
+COPY target/user-center-backend-0.0.1-SNAPSHOT.jar app.jar
 
 # 如果jar文件不存在，则安装Maven并构建
 RUN if [ ! -f app.jar ]; then \
@@ -13,8 +13,8 @@ RUN if [ ! -f app.jar ]; then \
     fi
 
 # 如果jar文件不存在，复制源码并构建
-COPY back/FioonYang-center/pom.xml .
-COPY back/FioonYang-center/src ./src
+COPY pom.xml .
+COPY src ./src
 RUN if [ ! -f app.jar ]; then \
     mvn clean package -DskipTests; \
     cp target/user-center-backend-0.0.1-SNAPSHOT.jar app.jar; \
