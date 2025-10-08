@@ -1,37 +1,23 @@
 @echo off
-echo 清理前端缓存...
+echo 正在清理前端缓存...
 
-REM 删除node_modules
-if exist node_modules (
-    echo 删除 node_modules...
-    rmdir /s /q node_modules
-)
+REM 停止可能运行的进程
+taskkill /f /im node.exe 2>nul
 
-REM 删除构建文件
-if exist dist (
-    echo 删除 dist...
-    rmdir /s /q dist
-)
+REM 清理缓存目录
+if exist .umi rmdir /s /q .umi
+if exist .cache rmdir /s /q .cache
+if exist .mfsu rmdir /s /q .mfsu
+if exist .local rmdir /s /q .local
+if exist dist rmdir /s /q dist
 
-REM 删除缓存文件
-if exist .umi (
-    echo 删除 .umi...
-    rmdir /s /q .umi
-)
+REM 清理npm缓存
+npm cache clean --force
 
-if exist .umi-production (
-    echo 删除 .umi-production...
-    rmdir /s /q .umi-production
-)
-
-if exist .umi-test (
-    echo 删除 .umi-test...
-    rmdir /s /q .umi-test
-)
-
+REM 重新安装依赖
 echo 重新安装依赖...
 npm install
 
 echo 缓存清理完成！
-echo 请运行 npm start 启动开发服务器
+echo 现在可以运行 npm start 启动前端
 pause

@@ -1,57 +1,43 @@
-# 前端忽略文件
-front/user-center-frontend-master/node_modules/
-front/user-center-frontend-master/dist/
-front/user-center-frontend-master/.umi/
-front/user-center-frontend-master/.umi-production/
-front/user-center-frontend-master/.umi-test/
-front/user-center-frontend-master/.env.local
-front/user-center-frontend-master/.env.development.local
-front/user-center-frontend-master/.env.test.local
-front/user-center-frontend-master/.env.production.local
-
-# 后端忽略文件
-back/FioonYang-center/target/
-back/FioonYang-center/.mvn/
-back/FioonYang-center/mvnw
-back/FioonYang-center/mvnw.cmd
-back/FioonYang-center/.idea/
-back/FioonYang-center/*.iml
-back/FioonYang-center/.vscode/
-
-# 系统文件
-.DS_Store
-Thumbs.db
-*.log
-*.tmp
-*.swp
-*.swo
-
-# IDE文件
+# Java
+target/
 .idea/
-.vscode/
+.mvn/
 *.iml
-*.ipr
-*.iws
+.DS_Store
+.env
+.vscode/
+
+# Node.js
+node_modules/
+dist/
+.umi/
+.cache/
+.mfsu/
+.local/
+.umi-production/
+.vscode/
+.env
+
+# 日志文件
+*.log
+logs/
 
 # 临时文件
 *.tmp
 *.temp
 
-# 部署相关
-*.jar
-*.war
-*.ear
-*.class
+# 系统文件
+Thumbs.db
+.DS_Store
 
-# 数据库文件
-*.db
-*.sqlite
-*.sqlite3
+# IDE文件
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
 
-# 日志文件
-logs/
-*.log
+# 构建文件
+build/
+out/
 
-# 缓存文件
-.cache/
-.parcel-cache/
