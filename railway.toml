@@ -1,0 +1,11 @@
+[[service]]
+name = "Fy_center_back"
+path = "back/FioonYang-center"
+build = { builder = "DOCKERFILE", dockerfilePath = "Dockerfile" }
+deploy = { healthcheckPath = "/api/user/current", healthcheckTimeout = 300 }
+
+[[service]]
+name = "Fy_center_front"
+path = "front/user-center-frontend-master"
+build = { builder = "DOCKERFILE", dockerfilePath = "Dockerfile" }
+deploy = { healthcheckPath = "/", healthcheckTimeout = 300 }
