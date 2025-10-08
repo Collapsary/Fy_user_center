@@ -1,8 +1,0 @@
-[phases.setup]
-nixPkgs = ['jdk8', 'maven']
-
-[phases.build]
-cmds = ['cd back/FioonYang-center && export JAVA_HOME=/nix/store/*-openjdk-8*/ && mvn clean package -DskipTests']
-
-[phases.start]
-cmd = 'cd back/FioonYang-center && java -jar target/user-center-backend-0.0.1-SNAPSHOT.jar'
