@@ -1,5 +1,5 @@
 # Java
-target/
+# target/  # 临时注释，允许提交预构建的jar文件
 .idea/
 .mvn/
 *.iml
