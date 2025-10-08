@@ -1,10 +1,10 @@
 {
   "$schema": "https://railway.app/railway.schema.json",
   "build": {
-    "builder": "NIXPACKS"
+    "builder": "DOCKERFILE",
+    "dockerfilePath": "back/FioonYang-center/Dockerfile"
   },
   "deploy": {
-    "startCommand": "cd back/FioonYang-center && java -jar target/user-center-backend-0.0.1-SNAPSHOT.jar",
     "healthcheckPath": "/api/user/current",
     "healthcheckTimeout": 300
   }
