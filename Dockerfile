@@ -1,8 +1,5 @@
 FROM openjdk:8-jre-alpine
 WORKDIR /app
-RUN apk add --no-cache maven
-COPY back/FioonYang-center/pom.xml .
-COPY back/FioonYang-center/src ./src
-RUN mvn clean package -DskipTests
+COPY ./back/FioonYang-center/target/user-center-backend-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
-CMD ["java", "-jar", "target/user-center-backend-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "app.jar"]
