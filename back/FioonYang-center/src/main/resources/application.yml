@@ -9,10 +9,8 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
-  # session失效时间 : 1天
   session:
     timeout: 86400
-
 
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
@@ -28,13 +26,8 @@ mybatis-plus:
 server:
   port: 8080
 
-# knife4j??
 knife4j:
   enable: true
   setting:
     enable-version: true
     enable-swagger-models: true
-
-
-
-
