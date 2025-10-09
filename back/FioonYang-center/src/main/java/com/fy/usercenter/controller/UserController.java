@@ -30,10 +30,31 @@ import static com.fy.usercenter.constant.UserConstant.USER_LOGIN_STATE;
 @RestController
 @RequestMapping("/api/user")
 @Api(tags = "用户模块")
+@CrossOrigin(origins = {"https://fy-center-front.up.railway.app", "http://localhost:3000", "http://localhost:8000"}, 
+             allowCredentials = "true", 
+             maxAge = 3600,
+             methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
 public class UserController {
 
     @Resource
     private UserService userService;
+
+    /**
+     * 处理OPTIONS预检请求
+     */
+    @RequestMapping(value = "/register", method = RequestMethod.OPTIONS)
+    public void handleOptions() {
+        // 空方法，CORS配置会处理响应头
+    }
+
+    /**
+     * CORS测试端点
+     */
+    @GetMapping("/cors-test")
+    @CrossOrigin(origins = {"https://fy-center-front.up.railway.app", "http://localhost:3000", "http://localhost:8000"})
+    public Result<String> corsTest() {
+        return Result.success("CORS is working!");
+    }
 
     /**
      * 用户注册
