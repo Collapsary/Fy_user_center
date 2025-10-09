@@ -4,9 +4,13 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DATABASE}?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DATABASE}?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&connectTimeout=60000&socketTimeout=60000
     username: ${MYSQL_USER}
     password: ${MYSQL_PASSWORD}
+    hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 10
+      minimum-idle: 5
   
   # 生产环境配置
   profiles:
@@ -26,7 +30,9 @@ mybatis-plus:
 # 日志配置
 logging:
   level:
-    com.fy.usercenter: INFO
-    org.springframework: WARN
+    com.fy.usercenter: DEBUG
+    org.springframework: INFO
+    org.springframework.jdbc: DEBUG
+    com.zaxxer.hikari: DEBUG
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
