@@ -72,6 +72,38 @@ public class UserController {
     }
 
     /**
+     * 详细数据库连接测试端点
+     */
+    @GetMapping("/db-test-detailed")
+    @CrossOrigin(origins = {"https://fy-center-front.up.railway.app", "http://localhost:3000", "http://localhost:8000"})
+    public Result<String> dbTestDetailed() {
+        try {
+            // 获取环境变量
+            String host = System.getenv("MYSQLHOST");
+            String port = System.getenv("MYSQLPORT");
+            String database = System.getenv("MYSQLDATABASE");
+            String user = System.getenv("MYSQLUSER");
+            String password = System.getenv("MYSQLPASSWORD");
+            
+            // 构建连接URL
+            String connectionUrl = String.format("jdbc:mysql://%s:%s/%s?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&connectTimeout=30000&socketTimeout=30000", 
+                host, port, database);
+            
+            // 尝试直接连接
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                java.sql.Connection conn = java.sql.DriverManager.getConnection(connectionUrl, user, password);
+                conn.close();
+                return Result.success("Direct connection successful! URL: " + connectionUrl);
+            } catch (Exception connEx) {
+                return Result.error("Direct connection failed: " + connEx.getMessage() + " | URL: " + connectionUrl);
+            }
+        } catch (Exception e) {
+            return Result.error("Test setup error: " + e.getMessage());
+        }
+    }
+
+    /**
      * 环境变量测试端点
      */
     @GetMapping("/env-test")
