@@ -4,13 +4,18 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${MYSQLHOST}:${MYSQLPORT}/${MYSQLDATABASE}?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&connectTimeout=60000&socketTimeout=60000
+    url: jdbc:mysql://${MYSQLHOST}:${MYSQLPORT}/${MYSQLDATABASE}?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&connectTimeout=60000&socketTimeout=60000&createDatabaseIfNotExist=true
     username: ${MYSQLUSER}
     password: ${MYSQLPASSWORD}
     hikari:
       connection-timeout: 60000
       maximum-pool-size: 10
       minimum-idle: 5
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:init.sql
+      continue-on-error: true
   
   # 生产环境配置
   profiles:
