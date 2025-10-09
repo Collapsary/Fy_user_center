@@ -1,7 +1,4 @@
-CREATE DATABASE IF NOT EXISTS user_center CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-
-USE user_center;
-
+-- 在railway数据库中创建用户表
 CREATE TABLE IF NOT EXISTS user (
     id bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
     username varchar(256) DEFAULT NULL COMMENT '用户昵称',
