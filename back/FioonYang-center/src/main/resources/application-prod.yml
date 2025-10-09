@@ -30,9 +30,8 @@ mybatis-plus:
 # 日志配置
 logging:
   level:
-    com.fy.usercenter: DEBUG
-    org.springframework: INFO
-    org.springframework.jdbc: DEBUG
-    com.zaxxer.hikari: DEBUG
+    com.fy.usercenter: INFO
+    org.springframework: WARN
+    root: WARN
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
