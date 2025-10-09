@@ -10,9 +10,19 @@ import {stringify} from "querystring";
 /**
  * 配置request请求时的默认参数
  */
+// 动态获取后端API地址
+const getApiPrefix = () => {
+  if (process.env.NODE_ENV === 'production') {
+    // 生产环境：使用环境变量或默认的后端URL
+    return process.env.REACT_APP_API_URL || 'https://fy-user-center-production-0b98.up.railway.app';
+  }
+  // 开发环境
+  return 'http://localhost:8080';
+};
+
 const request = extend({
   credentials: 'include', // 默认请求是否带上cookie
-  prefix: process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API_URL || 'http://fy_user_center.railway.internal:8080' : 'http://localhost:8080',
+  prefix: getApiPrefix(),
   timeout: 10000,
   // requestType: 'form',
 });
