@@ -57,6 +57,47 @@ public class UserController {
     }
 
     /**
+     * 数据库连接测试端点
+     */
+    @GetMapping("/db-test")
+    @CrossOrigin(origins = {"https://fy-center-front.up.railway.app", "http://localhost:3000", "http://localhost:8000"})
+    public Result<String> dbTest() {
+        try {
+            // 简单的数据库连接测试
+            long userCount = userService.count();
+            return Result.success("Database connected! User count: " + userCount);
+        } catch (Exception e) {
+            return Result.error("Database error: " + e.getMessage());
+        }
+    }
+
+    /**
+     * 简单注册测试端点（不涉及数据库）
+     */
+    @PostMapping("/register-test")
+    @CrossOrigin(origins = {"https://fy-center-front.up.railway.app", "http://localhost:3000", "http://localhost:8000"})
+    public Result<String> registerTest(@RequestBody UserRegisterRequest userRegisterRequest) {
+        try {
+            if(userRegisterRequest == null) {
+                return Result.error("Request is null");
+            }
+            
+            String userAccount = userRegisterRequest.getUserAccount();
+            String userPassword = userRegisterRequest.getUserPassword();
+            String checkPassword = userRegisterRequest.getCheckPassword();
+            String planetCode = userRegisterRequest.getPlanetCode();
+            
+            if(StringUtils.isAnyBlank(userAccount, userPassword, checkPassword, planetCode)) {
+                return Result.error("Parameters are null");
+            }
+            
+            return Result.success("Request validation passed! Account: " + userAccount);
+        } catch (Exception e) {
+            return Result.error("Test error: " + e.getMessage());
+        }
+    }
+
+    /**
      * 用户注册
      * @param userRegisterRequest 用户注册请求体
      * @return
