@@ -12,7 +12,7 @@ import {stringify} from "querystring";
  */
 const request = extend({
   credentials: 'include', // 默认请求是否带上cookie
-  prefix: process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API_URL || 'https://fy-center-back.up.railway.app' : 'http://localhost:8080',
+  prefix: process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API_URL || 'http://fy_user_center.railway.internal:8080' : 'http://localhost:8080',
   timeout: 10000,
   // requestType: 'form',
 });

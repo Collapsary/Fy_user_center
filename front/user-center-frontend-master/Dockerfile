@@ -1,13 +1,7 @@
-FROM nginx:alpine
-COPY dist /usr/share/nginx/html
-RUN echo 'server { \
-    listen 3000; \
-    server_name localhost; \
-    root /usr/share/nginx/html; \
-    index index.html; \
-    location / { \
-        try_files $uri $uri/ /index.html; \
-    } \
-}' > /etc/nginx/conf.d/default.conf
+FROM node:16-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install -g serve
+COPY dist ./dist
 EXPOSE 3000
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["serve", "-s", "dist", "-l", "3000"]
