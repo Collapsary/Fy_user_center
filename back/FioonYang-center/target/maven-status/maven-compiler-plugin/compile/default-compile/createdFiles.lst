@@ -3,6 +3,7 @@ com\fy\usercenter\model\domain\User.class
 com\fy\usercenter\common\Result.class
 com\fy\usercenter\FioonYangCenterApplication.class
 com\fy\usercenter\service\UserService.class
+com\fy\usercenter\config\SimpleCorsFilter.class
 com\fy\usercenter\model\request\UserRegisterRequest.class
 com\fy\usercenter\exception\GlobalExceptionHandler.class
 com\fy\usercenter\mapper\UserMapper.class

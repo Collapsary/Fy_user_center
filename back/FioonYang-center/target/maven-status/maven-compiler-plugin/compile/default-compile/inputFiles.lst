@@ -4,6 +4,7 @@ F:\javaweb-code\Fy_center\back\FioonYang-center\src\main\java\com\fy\usercenter\
 F:\javaweb-code\Fy_center\back\FioonYang-center\src\main\java\com\fy\usercenter\model\request\UserRegisterRequest.java
 F:\javaweb-code\Fy_center\back\FioonYang-center\src\main\java\com\fy\usercenter\config\WebMvcConfiguration.java
 F:\javaweb-code\Fy_center\back\FioonYang-center\src\main\java\com\fy\usercenter\constant\MessageConstant.java
+F:\javaweb-code\Fy_center\back\FioonYang-center\src\main\java\com\fy\usercenter\config\SimpleCorsFilter.java
 F:\javaweb-code\Fy_center\back\FioonYang-center\src\main\java\com\fy\usercenter\exception\GlobalExceptionHandler.java
 F:\javaweb-code\Fy_center\back\FioonYang-center\src\main\java\com\fy\usercenter\service\impl\UserServiceImpl.java
 F:\javaweb-code\Fy_center\back\FioonYang-center\src\main\java\com\fy\usercenter\service\UserService.java
